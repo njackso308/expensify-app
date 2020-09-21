@@ -1,0 +1,24 @@
+yarn add 
+@babel/core 
+@babel/plugin-proposal-class-properties 
+@babel/preset-env 
+@babel/preset-react 
+@babel/cli babel-loader 
+redux 
+react-redux 
+moment 
+react-dates 
+jest 
+react-test-renderer
+enzyme
+enzyme-adapter-react-16
+raf
+enzyme-to-json
+
+
+might need
+
+babel-plugin-transform-object-rest-spread
+add to babel config in plugins
+
+moved to SSH
