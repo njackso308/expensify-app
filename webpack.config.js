@@ -6,16 +6,10 @@ module.exports = (env) => {
 
   return {
     entry: './src/app.js',
-    mode: 'none',
     output: {
       path: path.join(__dirname, 'public'),
       filename: 'bundle.js'
     },
-    plugins: [
-      new MiniCssExtractPlugin({
-        filename: 'styles.css'
-      })
-    ],
     module: {
       rules: [{
         loader: 'babel-loader',
@@ -24,26 +18,18 @@ module.exports = (env) => {
       }, {
         test: /\.s?css$/,
         use: [
-          {
-            loader: MiniCssExtractPlugin.loader,
-            options: {
-              publicPath: './src/styles/styles.scss'
-            }
-          }, {
-            loader: 'css-loader',
-            options: {
-              sourceMap: true
-            }
-          }, {
-            loader: 'sass-loader',
-            options: {
-              sourceMap: true
-            }
-          }
+          MiniCssExtractPlugin.loader,
+          { loader: 'css-loader', options: { url: false, sourceMap: true } },
+          { loader: 'sass-loader', options: { sourceMap: true } }
         ]
       }]
     },
     devtool: isProduction ? 'source-map' : 'inline-source-map',
+    plugins: [
+      new MiniCssExtractPlugin({
+        filename: "styles.css"
+      })
+    ],
     devServer: {
       contentBase: path.join(__dirname, '/public'),
       historyApiFallback: true
