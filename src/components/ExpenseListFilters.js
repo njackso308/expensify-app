@@ -1,4 +1,5 @@
 import React from 'react'
+import 'react-dates/initialize'
 import { DateRangePicker } from 'react-dates'
 import { connect } from 'react-redux'
 import { setTextFilter, sortByAmount, sortByDate, setStartDate, setEndDate } from '../actions/filters'
