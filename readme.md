@@ -1,4 +1,5 @@
-yarn add 
+#Packages
+
 @babel/core 
 @babel/plugin-proposal-class-properties 
 @babel/preset-env 
@@ -14,11 +15,3 @@ enzyme
 enzyme-adapter-react-16
 raf
 enzyme-to-json
-
-
-might need
-
-babel-plugin-transform-object-rest-spread
-add to babel config in plugins
-
-moved to SSH
