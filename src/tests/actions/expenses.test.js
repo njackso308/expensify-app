@@ -1,4 +1,3 @@
-import { TestScheduler } from 'jest'
 import { addExpense, editExpense, removeExpense } from '../../actions/expenses'
 
 test('Should setup remove expense action object', () => {
