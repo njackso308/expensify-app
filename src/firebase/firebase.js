@@ -13,6 +13,23 @@ const config = {
 
 firebase.initializeApp(config)
 
-firebase.database().ref().set({
-  name: 'Nick Jackson'
+const database = firebase.database()
+
+database.ref().set({
+  name: 'Nick Jackson',
+  age: 30,
+  isSingle: false,
+  location: {
+    city: 'Rienzi',
+    country: 'United States'
+  }
+})
+
+// database.ref().set('this is my data')
+
+database.ref('age').set(27)
+database.ref('location/city').set('Corinth')
+database.ref('attributes').set({
+  height: 68,
+  weight: 300
 })
