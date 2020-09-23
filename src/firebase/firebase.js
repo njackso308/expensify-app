@@ -15,67 +15,51 @@ firebase.initializeApp(config)
 
 const database = firebase.database()
 
-database.ref('expenses').push({
-  description: 'Rent',
-  note: "October's rent",
-  amount: 95000,
-  createdAt: 0
+// child_removed
+database.ref('expenses').on('child_removed', (snapshot) => {
+  console.log(snapshot.key, snapshot.val())
 })
 
-database.ref('expenses').push({
-  description: 'Car Payment',
-  note: "October's car payment",
-  amount: 45000,
-  createdAt: 500
+// child_changed
+database.ref('expenses').on('child_changed', (snapshot) => {
+  console.log(snapshot.key, snapshot.val())
 })
 
-database.ref('expenses').push({
-  description: 'Internet Bill',
-  note: "Ace-Fiber",
-  amount: 7000,
-  createdAt: -5
+// child_added
+database.ref('expenses').on('child_added', (snapshot) => {
+  console.log(snapshot.key, snapshot.val())
 })
 
-// database.ref('notes').push({
-//   title: 'Course Topics',
-//   body: 'React native, Angular, Python'
-// })
+// database.ref('expenses')
+//   .on('value', (snapshot) => {
+//     const expenses = []
 
-// database.ref().on('value', (snapshot) => {
-//   const value = snapshot.val()
-//   console.log(`${value.name} is a ${value.job.title} at ${value.job.company} `)
-// }, (e) => {
-//   console.log('Something went wrong')
-// })
-
-// database.ref().set({
-//   name: 'Nick Jackson',
-//   age: 30,
-//   stressLevel: 6,
-//   job: {
-//     title: 'Software developer',
-//     company: 'Google'
-//   },
-//   location: {
-//     city: 'Rienzi',
-//     country: 'United States'
-//   }
-// }).then(() => {
-//   console.log('Data is saved.')
-// }).catch((err) => {
-//   console.log('This failed', err)
-// })
-
-// database.ref().update({
-//   stressLevel: 9,
-//   'job/company': 'Amazon',
-//   'location/city': 'Seattle'
-// })
-
-// database.ref()
-//   .remove()
-//   .then(() => {
-//     console.log('Data was removed')
-//   }).catch((err) => {
-//     console.log('Did not remove data')
+//     snapshot.forEach((childSnapshot) => {
+//       expenses.push({
+//         id: childSnapshot.key,
+//         ...childSnapshot.val()
+//       })
+//     })
+//     console.log(expenses)
 //   })
+
+  // database.ref('expenses')
+  // .on('value', )
+  // .then((snapshot) => {
+  //   const expenses = []
+
+  //   snapshot.forEach((childSnapshot) => {
+  //     expenses.push({
+  //       id: childSnapshot.key,
+  //       ...childSnapshot.val()
+  //     })
+  //   })
+  //   console.log(expenses)
+  // })
+
+// database.ref('expenses').push({
+//   description: 'Rent',
+//   note: "October's rent",
+//   amount: 95000,
+//   createdAt: 0
+// })
