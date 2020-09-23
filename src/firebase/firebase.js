@@ -15,29 +15,36 @@ firebase.initializeApp(config)
 
 const database = firebase.database()
 
-database.ref().set({
-  name: 'Nick Jackson',
-  age: 30,
-  stressLevel: 6,
-  job: {
-    title: 'Software developer',
-    company: 'Google'
-  },
-  location: {
-    city: 'Rienzi',
-    country: 'United States'
-  }
-}).then(() => {
-  console.log('Data is saved.')
-}).catch((err) => {
-  console.log('This failed', err)
+database.ref().on('value', (snapshot) => {
+  const value = snapshot.val()
+  console.log(`${value.name} is a ${value.job.title} at ${value.job.company} `)
+}, (e) => {
+  console.log('Something went wrong')
 })
 
-database.ref().update({
-  stressLevel: 9,
-  'job/company': 'Amazon',
-  'location/city': 'Seattle'
-})
+// database.ref().set({
+//   name: 'Nick Jackson',
+//   age: 30,
+//   stressLevel: 6,
+//   job: {
+//     title: 'Software developer',
+//     company: 'Google'
+//   },
+//   location: {
+//     city: 'Rienzi',
+//     country: 'United States'
+//   }
+// }).then(() => {
+//   console.log('Data is saved.')
+// }).catch((err) => {
+//   console.log('This failed', err)
+// })
+
+// database.ref().update({
+//   stressLevel: 9,
+//   'job/company': 'Amazon',
+//   'location/city': 'Seattle'
+// })
 
 // database.ref()
 //   .remove()
