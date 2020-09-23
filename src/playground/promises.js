@@ -10,7 +10,15 @@ const promise = new Promise((resolve, reject) => {
 
 promise.then((data) => {
   console.log(data)
-  return 'some data'
+  return new Promise((resolve, reject) => {
+    setTimeout(() => {
+      resolve({
+        name: 'Nick',
+        age: 30
+      })
+      // reject('Something went wrong')
+    }, 5000)
+  })
 }).then((str) => {
   console.log('does this run?', str)
 }).catch((err) => {
