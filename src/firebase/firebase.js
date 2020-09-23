@@ -15,12 +15,38 @@ firebase.initializeApp(config)
 
 const database = firebase.database()
 
-database.ref().on('value', (snapshot) => {
-  const value = snapshot.val()
-  console.log(`${value.name} is a ${value.job.title} at ${value.job.company} `)
-}, (e) => {
-  console.log('Something went wrong')
+database.ref('expenses').push({
+  description: 'Rent',
+  note: "October's rent",
+  amount: 95000,
+  createdAt: 0
 })
+
+database.ref('expenses').push({
+  description: 'Car Payment',
+  note: "October's car payment",
+  amount: 45000,
+  createdAt: 500
+})
+
+database.ref('expenses').push({
+  description: 'Internet Bill',
+  note: "Ace-Fiber",
+  amount: 7000,
+  createdAt: -5
+})
+
+// database.ref('notes').push({
+//   title: 'Course Topics',
+//   body: 'React native, Angular, Python'
+// })
+
+// database.ref().on('value', (snapshot) => {
+//   const value = snapshot.val()
+//   console.log(`${value.name} is a ${value.job.title} at ${value.job.company} `)
+// }, (e) => {
+//   console.log('Something went wrong')
+// })
 
 // database.ref().set({
 //   name: 'Nick Jackson',
