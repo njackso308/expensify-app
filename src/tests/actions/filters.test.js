@@ -7,7 +7,7 @@ import {
   sortByDate
 } from '../../actions/filters'
 
-test('Should generate set start date action object', () => {
+test('should generate set start date action object', () => {
   const action = setStartDate(moment(0))
   expect(action).toEqual({
     type: 'SET_START_DATE',
@@ -15,7 +15,7 @@ test('Should generate set start date action object', () => {
   })
 })
 
-test('Should generate set end date action object', () => {
+test('should generate set end date action object', () => {
   const action = setEndDate(moment(0))
   expect(action).toEqual({
     type: 'SET_END_DATE',
@@ -23,7 +23,7 @@ test('Should generate set end date action object', () => {
   })
 })
 
-test('Should generate set text action object wtih provided data', () => {
+test('should generate set text action object wtih provided data', () => {
   const text = 'test data'
   const action = setTextFilter(text)
   expect(action).toEqual({
@@ -32,7 +32,7 @@ test('Should generate set text action object wtih provided data', () => {
   })
 })
 
-test('Should generate set text action object wtih default data', () => {
+test('should generate set text action object wtih default data', () => {
   const action = setTextFilter()
   expect(action).toEqual({
     type: 'SET_TEXT_FILTER',
@@ -40,10 +40,10 @@ test('Should generate set text action object wtih default data', () => {
   })
 })
 
-test('Should generate action object for sort by amount', () => {
+test('should generate action object for sort by amount', () => {
   expect(sortByAmount()).toEqual({ type: 'SORT_BY_AMOUNT' })
 })
 
-test('Should generate action object for sort by date', () => {
+test('should generate action object for sort by date', () => {
   expect(sortByDate()).toEqual({ type: 'SORT_BY_DATE' })
 })
